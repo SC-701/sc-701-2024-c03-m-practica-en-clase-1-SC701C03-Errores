@@ -1,0 +1,2 @@
+#Agregar Source de paquetes
+dotnet nuget add source "https://nuget.pkg.github.com/Drojascode/index.json" --name "Paquetes" --username "Drojascode" --password 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 --store-password-in-clear-text
