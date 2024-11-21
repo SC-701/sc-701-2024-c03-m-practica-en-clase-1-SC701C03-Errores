@@ -17,10 +17,15 @@ namespace API.Controllers
             _documentoFlujo = documentoFlujo;
         }
         [HttpPost]
-        public async Task<IActionResult> Enviar([FromBody]Correo correo)
+        public IActionResult Enviar([FromBody] Correo correo)
         {
             var resultado = _documentoFlujo.Enviar(correo);
             return Ok();
+        }
+
+        Task<IActionResult> ICorreoController.Enviar(Correo correo)
+        {
+            throw new NotImplementedException();
         }
     }
 }

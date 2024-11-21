@@ -21,27 +21,37 @@ namespace Servicios
             _configuracion = configuracion;
         }
 
-        public async Task<bool> Agregar(DocumentoContenido documento, Guid id)
+        public bool Agregar(DocumentoContenido documento, Guid id)
         {
             var ruta = ObtenerRuta();
             try
             {
-                File.WriteAllBytes($"{ruta}{id}",documento.Contenido);
-               return true;
+                File.WriteAllBytes($"{ruta}{id}", documento.Contenido);
+                return true;
             }
             catch (Exception ex)
-            {     
+            {
                 new Exception("Error al guardar el documento", ex);
-                return false;   
+                return false;
             }
         }
 
-        public async Task<byte[]> Obtener(Guid? id)
+        public async Task<byte[]?> Obtener(Guid? id)
         {
             var archivo= Directory.EnumerateFiles(ObtenerRuta(), id.ToString(),SearchOption.AllDirectories).FirstOrDefault();
             if (archivo == null)
                 return null;
             return await File.ReadAllBytesAsync(archivo);            
+        }
+
+        public Task<byte[]> Obtener(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<bool> IDocumentoServicio.Agregar(DocumentoContenido documento, Guid id)
+        {
+            throw new NotImplementedException();
         }
 
         private string ObtenerRuta()
