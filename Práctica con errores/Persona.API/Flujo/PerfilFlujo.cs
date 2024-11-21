@@ -44,5 +44,7 @@ namespace Flujo
             curriculum.Contenido = curriculumBytes;
             return new PerfilRequest {IdPersona=perfil.IdPersona ,Video=perfil.Video, Curriculum=curriculum, Foto=foto };
         }
+
+        /*Esto es una prueba*/
     }
 }
