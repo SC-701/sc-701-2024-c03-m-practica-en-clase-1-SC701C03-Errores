@@ -11,7 +11,7 @@ namespace Abstracciones.Interfaces.Servicios
     {
 
         Task<bool> Agregar(DocumentoContenido documento, Guid id);
-        Task<byte[]> Obtener(Guid? id);
-
+        Task<byte[]> Obtener(Guid id);
+        Task<byte[]> Obtener(Guid? foto);
     }
 }

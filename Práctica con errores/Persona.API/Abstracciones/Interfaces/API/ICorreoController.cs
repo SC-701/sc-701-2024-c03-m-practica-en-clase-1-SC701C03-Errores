@@ -10,6 +10,6 @@ namespace Abstracciones.Interfaces.API
 {
     public interface ICorreoController
     {
-        Task<IActionResult> enviar(Correo correo);
+        Task<IActionResult> Enviar(Correo correo);
     }
 }

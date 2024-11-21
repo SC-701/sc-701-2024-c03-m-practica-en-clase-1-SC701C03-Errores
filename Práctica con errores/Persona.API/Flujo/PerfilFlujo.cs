@@ -7,17 +7,11 @@ using Flujo.Helper;
 
 namespace Flujo
 {
-    public class PerfilFlujo : IPerfilFlujo
+    public class PerfilFlujo(IDocumentoServicio documentoServicio, IDocumentoDA documentoDA) : IPerfilFlujo
     {        
         private IPerfilDA _perfilDA;
-        private IDocumentoDA _documentoDA;
-        private IDocumentoServicio _documentoServicio;
-
-        public PerfilFlujo(IDocumentoServicio documentoServicio, IDocumentoDA documentoDA)
-        {
-            _documentoServicio = documentoServicio;
-            _documentoDA = documentoDA;
-        }
+        private IDocumentoDA _documentoDA = documentoDA;
+        private IDocumentoServicio _documentoServicio = documentoServicio;
 
         public async Task<Guid> Agregar(PerfilRequest perfil)
         {
@@ -31,7 +25,7 @@ namespace Flujo
             return resultado;
         }
 
-        public async Task<PerfilRequest> Obtener(Guid Id)
+        public async Task<PerfilRequest?> Obtener(Guid Id)
         {
             var perfil = await _perfilDA.Obtener(Id);
             if (perfil == null)
@@ -45,6 +39,9 @@ namespace Flujo
             return new PerfilRequest {IdPersona=perfil.IdPersona ,Video=perfil.Video, Curriculum=curriculum, Foto=foto };
         }
 
-        /*Esto es una prueba*/
+        public Task<PerfilRequest> Obtener(Guid? Id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

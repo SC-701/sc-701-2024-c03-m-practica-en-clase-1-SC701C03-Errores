@@ -25,7 +25,7 @@ namespace DA.Dapper
         }
 
         
-        public async Task<PerfilBD> Obtener(Guid Id)
+        public async Task<PerfilBD?> Obtener(Guid Id)
         {
             PerfilBD? resultadoConsulta = await ObtenerPerfil(Id);
             if (resultadoConsulta==null)

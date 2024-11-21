@@ -4,7 +4,7 @@ namespace Abstracciones.Interfaces.Flujo
 {
     public interface IPerfilFlujo
     {
-        Task<PerfilRequest> Obtener(Guid Id);
+        Task<PerfilRequest> Obtener(Guid? Id);
         Task<Guid> Agregar(PerfilRequest perfil);
     }
 }
